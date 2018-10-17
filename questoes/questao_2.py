@@ -37,10 +37,38 @@
 # Para a correta execução do programa, a estrutura atual deve ser mantida,
 # substituindo apenas o comando print(questão...) existente.
 ##
+import math
 def main():
-    print("questao 2")
-
-
     
+    CIMA = 0
+    BAIXO = 0
+    ESQUERDA = 0
+    DIREITA = 0
+    
+    m = input()
+    
+    while m:
+    	
+    	if m.find('CIMA') == 0 and m[m.find(" ")+1:].isdigit():
+    		CIMA += int(m[m.find(" ")+1:])
+    	
+        elif m.find('BAIXO') == 0 and m[m.find(" ")+1:].isdigit():
+    		BAIXO += int(m[m.find(" ")+1:])
+    	
+        elif m.find('DIREITA') == 0 and m[m.find(" ")+1:].isdigit():
+    		DIREITA += int(m[m.find(" ")+1:])
+    	
+        elif m.find('ESQUERDA') == 0 and m[m.find(" ")+1:].isdigit():
+    		ESQUERDA += int(m[m.find(" ")+1:])
+    	
+    	m = input()
+
+    X = CIMA - BAIXO
+    Y = ESQUERDA - DIREITA
+    dist = X*X + Y*Y
+    dist = math.sqrt(dist)
+    print(round(dist))
+
+
 if __name__ == '__main__':
     main()
