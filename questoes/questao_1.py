@@ -27,10 +27,35 @@
 # Para a correta execução do programa, a estrutura atual deve ser mantida,
 # substituindo apenas o comando print(questão...) existente.
 ##
+from string import ascii_lowercase, ascii_uppercase, digits
+chars_especiais = "$#@"
 def main():
-    print("questao 1")
-    
+    senha = input("Digite as senhas a serem verificadas:\n")
+    x = 0
+    senha_correta=''
+    while x < len(senha):
+        if senha[x] == " ":
+            x+=1
+            continue
+        minusculo = numero = maiusculo = especial = False
+        senha=''
+        while x < len(senha) and senha[x] != "," and senha[x] != " ":
+            senha+=senha[x]
+            if senha[x] in ascii_lowercase:
+                minusculo = True
+            if senha[x] in ascii_uppercase:
+                maiusculo = True
+            if senha[x].isdigit():
+                digito = True
+            if senha[x] in chars_especiais:
+                tem_especial = True
+            x+=1
+        if minusculo and maiusculo and digito and especial:
+            if len(senha) >= 6 and len(senha) <= 12:
+                senha_correta += senha + ", "
+        x+=1
+    print(senha_correta[:-2])
 
 
 if __name__ == '__main__':
-    main()
+    main()  
