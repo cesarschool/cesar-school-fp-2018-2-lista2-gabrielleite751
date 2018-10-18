@@ -19,9 +19,36 @@
 # substituindo apenas o comando print(questão...) existente.
 ##
 def main():
-    print("questao 4")
+    ano = int(input("Ano:\n "))
+    mes = int(input("Mes:\n "))
+    dia = int(input("Dia:\n "))
+    bis = False
+    if ano % 4 == 0:
+        if ano % 100:
+            bis = True
+        else:
+            if ano % 400 == 0:
+                bis = True
+    if dia >= 28:
+        if mes == 2:
+            if dia == 28 and not bis:
+                dia = 0
+                mes = 3
+        else:
+            if dia == 30:
+                if mes == 4 or mes == 6 or mes == 9 or mes == 11:
+                    mes += 1
+                    dia = 0
+            elif dia == 31:
+                dia = 0
+                if mes == 12:
+                    mes = 1
+                    ano += 1
+                else:
+                    mes += 1
 
+    print("{:0>4}-{:0>2}-{:0>2}".format(ano,mes,dia+1))
 
     
 if __name__ == '__main__':
-    main()
+    main() 
